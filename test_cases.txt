@@ -1,0 +1,251 @@
+- name: exit
+  input: |
+4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: watch (empty)
+  input: |
+1 1 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: add watch
+  input: |
+2 new-one
+1 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. new-one
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: add watch remove watch
+  input: |
+2 out
+1 2 3 1 1 1 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. out
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. out
+        2. Back to main menu
+Playlist deleted.
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: add exit
+  input: |
+2 first
+4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: add add exit
+  input: |
+2 first
+2 second
+4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: add add remove exit
+  input: |
+2 first
+2 second
+3 1 1 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. first
+        2. second
+        3. Back to main menu
+Playlist deleted.
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. second
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: add add remove1 add remove2 watch remove1
+input: |
+2 first
+2 second
+3 1 2 third
+3 2 1 2 3 1 4
+output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. first
+        2. second
+        3. Back to main menu
+Playlist deleted.
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. second
+        2. third
+        3. Back to main menu
+Playlist deleted.
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. second
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. second
+        2. Back to main menu
+Playlist deleted.
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
