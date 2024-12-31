@@ -4,8 +4,17 @@
 
 #define FIRST_CHOICE 1
 #define EXIT_CHOICE 4
+#define EXIT_PLAYLIST_MENU_CHOICE 6
+#define DEFAULT_SONG_STREAMS 0
+#define DEFAULT_SONGS_NUM 0
 
 // TODO validate all string.h had been seen in TIRGUL
+// TODO before commit fix add playlist, remove getchar because 2shalom
+
+typedef enum Action {
+    NO_ACTION = 0,
+    SAFE_EXIT = 1
+} Action;
 
 typedef struct Song {
     char* title;
@@ -17,14 +26,14 @@ typedef struct Song {
 
 typedef struct Playlist {
     char* name;
-    Song** songs;
+    Song* songs;
     int songsNum;
 } Playlist;
 
 /*
  Inputs a valid main menu option and returns it
 */
-int playlistManagerChoice() {
+int mainMenuChoice() {
     // Default choice is "exit" to exit program
     int choice = EXIT_CHOICE;
     do {
@@ -70,6 +79,26 @@ int playlistChoice(Playlist** playlists, int playlistsCount) {
 }
 
 /*
+ Inputs a valid playlist menu choice and returns it
+*/
+int playlistMenuChoice() {
+    // Default menu choice is "exit" to go back to playlist choice
+    int choice = EXIT_PLAYLIST_MENU_CHOICE;
+    do {
+        printf("\t1. Show Playlist\n\t2. Add Song\n\t3. Delete Song\n\t4. Sort\n\t5. Play\n\t6. exit\n");
+        scanf("%d", &choice);
+
+        // Valid menu choice, stop the loop and return it
+        if (choice >= FIRST_CHOICE || choice <= EXIT_PLAYLIST_MENU_CHOICE)
+            break;
+
+        // Invalid choice, input again for a valid menu choice
+        printf("Invalid option\n");
+    } while (1);
+    return choice;
+}
+
+/*
  Frees a single playlist
 */
 void freePlaylist(Playlist* playlist) {
@@ -80,9 +109,9 @@ void freePlaylist(Playlist* playlist) {
     if (playlist->songs != NULL) {
         for (int song = 0; song < playlist->songsNum; song++) {
             // TODO remove song dedicated function
-            free(playlist->songs[song]->title);
-            free(playlist->songs[song]->artist);
-            free(playlist->songs[song]->lyrics);
+            free(playlist->songs[song].title);
+            free(playlist->songs[song].artist);
+            free(playlist->songs[song].lyrics);
         }
         free(playlist->songs);
     }
@@ -99,13 +128,14 @@ void freeAll(Playlist** playlists, int playlistsCount) {
         freePlaylist(&(*playlists)[pl]);
 }
 
-// TODO test free logic here
+// TODO test free logic here + maybe shoudln't exit? check instructions
 /*
- Safely exits program: prints given message and frees all playlists
+ Safely exits program: frees all playlists and exits with error code 1
 */
-void safeExit(char* message, Playlist** playlists, int playlistsCount) {
-    printf("%s\n", message);
+void safeExit(Playlist** playlists, int playlistsCount) {
+    printf("Allocation failure: free all and exit safely\n");
     freeAll(playlists, playlistsCount);
+    free(*playlists);
     exit(1);
 }
 
@@ -116,11 +146,10 @@ char* allocateInputString() {
     int size = 0;
     char* str = NULL;
 
-    // Clean the buffer before string input
-    getchar();
     char c;
+    scanf(" %c", &c);
     // Scan chars until enter is pressed
-    while (scanf("%c", &c) == 1 && c != '\n') {
+    while (c != '\n') {
         // Allocate space for the new char
         size++;
         char* temp = realloc(str, (size + 1) * sizeof(char));
@@ -133,6 +162,9 @@ char* allocateInputString() {
         // Successful new char allocation, add it to the built string
         str = temp;
         str[size - 1] = c;
+
+        // Scan next char
+        scanf("%c", &c);
     }
 
     // Return NULL if no chars were scanned, otherwise return string with null terminator
@@ -145,24 +177,23 @@ char* allocateInputString() {
  Inputs a playlist name and adds it to playlists array
 */
 void addPlaylist(Playlist** playlists, int* playlistsCount) {
+    // Allocate space for the new playlist
+    Playlist* newPlaylists = realloc(*playlists, (*playlistsCount + 1) * sizeof(Playlist));
+    if (newPlaylists == NULL)
+        safeExit(playlists, *playlistsCount);
+    *playlists = newPlaylists;
+
     printf("Enter playlist's name:\n");
     // Get new playlist name
     char* name = allocateInputString();
     if (name == NULL)
-        safeExit("Playlist name input failed (realloc)", playlists, *playlistsCount);
-
-    // Allocate space for the new playlist
-    Playlist* newPlaylists = realloc(*playlists, (*playlistsCount + 1) * sizeof(Playlist));
-    if (newPlaylists == NULL) {
-        free(name);
-        safeExit("Add playlist failed (realloc)", playlists, *playlistsCount);
-    }
-    *playlists = newPlaylists;
+        safeExit(playlists, *playlistsCount);
 
     // Set playlist properties
-    (*playlists)[*playlistsCount].name = name;
-    (*playlists)[*playlistsCount].songs = NULL;
-    (*playlists)[*playlistsCount].songsNum = 0;
+    Playlist* playlist = &(*playlists)[*playlistsCount];
+    playlist->name = name;
+    playlist->songs = NULL;
+    playlist->songsNum = DEFAULT_SONGS_NUM;
 
     // Increase playlists count by one
     (*playlistsCount)++;
@@ -188,29 +219,145 @@ void removePlaylist(Playlist** playlists, int* playlistsCount) {
     printf("Playlist deleted.\n");
 }
 
-int main() {
-    // Init playlists
-    Playlist* playlists = NULL;
-    int playlistsCount = 0;
+void showPlaylist(Playlist* playlist) {
+    for (int song = 0; song < playlist->songsNum; song++) {
+        Song currentSong = playlist->songs[song];
+        printf("%d. Title: %s\n   Artist: %s\n   Released: %d\n   Streams: %d\n\n",
+            song + 1, currentSong.title, currentSong.artist, currentSong.year, currentSong.streams);
+    }
+    printf("choose a song to play, or 0 to quit:\n");
 
-    int choice = playlistManagerChoice();
+    int choice;
+    scanf("%d", &choice);
+    while (choice > 0 && choice <= playlist->songsNum) {
+        Song chosenSong = playlist->songs[choice - 1];
+        printf("Now playing %s:\n$ %s $\nchoose a song to play, or 0 to quit:\n",
+            chosenSong.title, chosenSong.lyrics);
+        scanf("%d", &choice);
+    }
+}
+
+Action addSongToPlaylist(Playlist* playlist) {
+    Song* newSongs = realloc(playlist->songs, (playlist->songsNum + 1) * sizeof(Song));
+    if (newSongs == NULL)
+        return SAFE_EXIT;
+    playlist->songs = newSongs;
+
+    printf("Enter song's details\nTitle:\n");
+    char* title = allocateInputString();
+    if (title == NULL)
+        return SAFE_EXIT;
+
+    printf("Artist:\n");
+    char* artist = allocateInputString();
+    if (artist == NULL)
+        return SAFE_EXIT;
+
+    printf("Year of release:\n");
+    int year;
+    scanf("%d", &year);
+
+    printf("Lyrics:\n");
+    char* lyrics = allocateInputString();
+    if (lyrics == NULL)
+        return SAFE_EXIT;
+
+    Song* song = &playlist->songs[playlist->songsNum];
+    song->title = title;
+    song->artist = artist;
+    song->year = year;
+    song->lyrics = lyrics;
+    song->streams = DEFAULT_SONG_STREAMS;
+
+    // Increase playlist songs count by one
+    playlist->songsNum++;
+    return NO_ACTION;
+}
+
+/*
+ Playlist actions menu, inputs actions and acts accordingly until exit is chosen
+ Returns an Action which describes what action should be taken when this function returns
+*/
+Action playlistMenu(Playlist* playlist) {
+    // Prints playlist name once
+    printf("playlist %s:\n", playlist->name);
+
+    Action action = NO_ACTION;
+    int plMenuChoice = playlistMenuChoice();
+    while (plMenuChoice != EXIT_PLAYLIST_MENU_CHOICE) {
+        switch (plMenuChoice) {
+            // Show Playlist
+            case 1:
+                showPlaylist(playlist);
+                break;
+
+            // Add Song
+            case 2:
+                action = addSongToPlaylist(playlist);
+                break;
+
+            // Delete Song
+            case 3:
+                break;
+
+            // Sort
+            case 4:
+                break;
+
+            // Play
+            case 5:
+                break;
+
+            // exit
+            case 6:
+                break;
+
+            default:
+                break;
+        }
+
+        if (action == SAFE_EXIT)
+            return SAFE_EXIT;
+        plMenuChoice = playlistMenuChoice();
+    }
+
+    return NO_ACTION;
+}
+
+/*
+ Playlist selection menu, inputs playlist numbers and acts accordingly until exit is chosen
+*/
+void selectPlaylistMenu(Playlist** playlists, int playlistsCount) {
+    int selected = playlistChoice(playlists, playlistsCount);
+    while (selected < playlistsCount) {
+        Action action = playlistMenu(&(*playlists)[selected]);
+        if (action == SAFE_EXIT)
+            safeExit(playlists, playlistsCount);
+
+        selected = playlistChoice(playlists, playlistsCount);
+    }
+}
+
+/*
+ Application main menu, inputs user choices and acts accordingly until exit is chosen
+*/
+void mainMenu(Playlist** playlists, int* playlistsCount) {
+    int choice = mainMenuChoice();
     while (choice != EXIT_CHOICE) {
         switch (choice) {
             // Watch playlists
             case 1:
-                int plChoice = playlistChoice(&playlists, playlistsCount);
-                // User chose "back to main menu"
-                if (plChoice == playlistsCount) break;
-                // TODO Enter specific playlist menu
+                selectPlaylistMenu(playlists, *playlistsCount);
+                break;
 
             // Add playlist
             case 2:
-                addPlaylist(&playlists, &playlistsCount);
+                addPlaylist(playlists, playlistsCount);
                 break;
 
             // Remove playlist
             case 3:
-                removePlaylist(&playlists, &playlistsCount);
+                removePlaylist(playlists, playlistsCount);
                 break;
 
             // Exit
@@ -221,8 +368,17 @@ int main() {
                 printf("Invalid option\n");
                 break;
         }
-        choice = playlistManagerChoice();
+        choice = mainMenuChoice();
     }
+}
+
+int main() {
+    // Init playlists
+    Playlist* playlists = NULL;
+    int playlistsCount = 0;
+
+    // Run main menu
+    mainMenu(&playlists, &playlistsCount);
 
     // Free all playlists before exit
     freeAll(&playlists, playlistsCount);

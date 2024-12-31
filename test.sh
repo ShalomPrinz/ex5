@@ -20,7 +20,7 @@ run_test_case() {
     fi
 
     # Run the program with input and capture output
-    actual_output=$(echo "$input" | ./program)
+    actual_output=$(echo "$input" | ./program | tr -d '\r')
     actual_output="${actual_output}
 "
 

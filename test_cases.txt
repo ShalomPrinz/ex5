@@ -249,3 +249,294 @@ Please Choose:
         3. Remove playlist
         4. exit
 Goodbye!
+
+- name: Songs: addPl enter
+  input: |
+2 example
+1 1 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. example
+        2. Back to main menu
+playlist example:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. example
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: Songs: addPl enter show (empty)
+  input: |
+2 example
+1 1 1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. example
+        2. Back to main menu
+playlist example:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. example
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: Songs: addPl enter addSo show
+  input: |
+2 another
+1 1 2 title1
+artist1
+2000
+that's my lyrics
+1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+playlist another:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: Songs: addPl enter addSo show play
+  input: |
+2 another
+1 1 2 title1
+artist1
+2000
+that's my lyrics
+1 1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+playlist another:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+Now playing title1:
+$ that's my lyrics $
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: Songs: addPl enter addSo1 addSo2 show
+  input: |
+2 another
+1 1 2 title1
+artist1
+2000
+that's my lyrics
+2 t2
+art2
+2017
+another one
+1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+playlist another:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!

@@ -1,3 +1,6 @@
 .idea/
 CMakeLists.txt
 cmake-build-debug/
+
+ex5.out
+saved_tests.txt
