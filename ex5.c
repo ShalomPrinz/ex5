@@ -9,12 +9,6 @@
 #define DEFAULT_SONGS_NUM 0
 
 // TODO validate all string.h had been seen in TIRGUL
-// TODO before commit fix add playlist, remove getchar because 2shalom
-
-typedef enum Action {
-    NO_ACTION = 0,
-    SAFE_EXIT = 1
-} Action;
 
 typedef struct Song {
     char* title;
@@ -108,7 +102,7 @@ void freePlaylist(Playlist* playlist) {
     free(playlist->name);
     if (playlist->songs != NULL) {
         for (int song = 0; song < playlist->songsNum; song++) {
-            // TODO remove song dedicated function
+            // TODO move to song dedicated function?
             free(playlist->songs[song].title);
             free(playlist->songs[song].artist);
             free(playlist->songs[song].lyrics);
@@ -128,14 +122,11 @@ void freeAll(Playlist** playlists, int playlistsCount) {
         freePlaylist(&(*playlists)[pl]);
 }
 
-// TODO test free logic here + maybe shoudln't exit? check instructions
 /*
- Safely exits program: frees all playlists and exits with error code 1
+ Exits program: exits with error code 1 due to allocation failure
 */
-void safeExit(Playlist** playlists, int playlistsCount) {
-    printf("Allocation failure: free all and exit safely\n");
-    freeAll(playlists, playlistsCount);
-    free(*playlists);
+void exitProgram() {
+    printf("Allocation failure: exit program\n");
     exit(1);
 }
 
@@ -180,14 +171,14 @@ void addPlaylist(Playlist** playlists, int* playlistsCount) {
     // Allocate space for the new playlist
     Playlist* newPlaylists = realloc(*playlists, (*playlistsCount + 1) * sizeof(Playlist));
     if (newPlaylists == NULL)
-        safeExit(playlists, *playlistsCount);
+        exitProgram();
     *playlists = newPlaylists;
 
     printf("Enter playlist's name:\n");
     // Get new playlist name
     char* name = allocateInputString();
     if (name == NULL)
-        safeExit(playlists, *playlistsCount);
+        exitProgram();
 
     // Set playlist properties
     Playlist* playlist = &(*playlists)[*playlistsCount];
@@ -237,21 +228,21 @@ void showPlaylist(Playlist* playlist) {
     }
 }
 
-Action addSongToPlaylist(Playlist* playlist) {
+void addSongToPlaylist(Playlist* playlist) {
     Song* newSongs = realloc(playlist->songs, (playlist->songsNum + 1) * sizeof(Song));
     if (newSongs == NULL)
-        return SAFE_EXIT;
+        exitProgram();
     playlist->songs = newSongs;
 
     printf("Enter song's details\nTitle:\n");
     char* title = allocateInputString();
     if (title == NULL)
-        return SAFE_EXIT;
+        exitProgram();
 
     printf("Artist:\n");
     char* artist = allocateInputString();
     if (artist == NULL)
-        return SAFE_EXIT;
+        exitProgram();
 
     printf("Year of release:\n");
     int year;
@@ -260,7 +251,7 @@ Action addSongToPlaylist(Playlist* playlist) {
     printf("Lyrics:\n");
     char* lyrics = allocateInputString();
     if (lyrics == NULL)
-        return SAFE_EXIT;
+        exitProgram();
 
     Song* song = &playlist->songs[playlist->songsNum];
     song->title = title;
@@ -271,18 +262,15 @@ Action addSongToPlaylist(Playlist* playlist) {
 
     // Increase playlist songs count by one
     playlist->songsNum++;
-    return NO_ACTION;
 }
 
 /*
- Playlist actions menu, inputs actions and acts accordingly until exit is chosen
- Returns an Action which describes what action should be taken when this function returns
+ Playlist actions menu, asks for user action choice and acts accordingly until exit menu is chosen
 */
-Action playlistMenu(Playlist* playlist) {
+void playlistMenu(Playlist* playlist) {
     // Prints playlist name once
     printf("playlist %s:\n", playlist->name);
 
-    Action action = NO_ACTION;
     int plMenuChoice = playlistMenuChoice();
     while (plMenuChoice != EXIT_PLAYLIST_MENU_CHOICE) {
         switch (plMenuChoice) {
@@ -293,7 +281,7 @@ Action playlistMenu(Playlist* playlist) {
 
             // Add Song
             case 2:
-                action = addSongToPlaylist(playlist);
+                addSongToPlaylist(playlist);
                 break;
 
             // Delete Song
@@ -316,12 +304,8 @@ Action playlistMenu(Playlist* playlist) {
                 break;
         }
 
-        if (action == SAFE_EXIT)
-            return SAFE_EXIT;
         plMenuChoice = playlistMenuChoice();
     }
-
-    return NO_ACTION;
 }
 
 /*
@@ -330,10 +314,7 @@ Action playlistMenu(Playlist* playlist) {
 void selectPlaylistMenu(Playlist** playlists, int playlistsCount) {
     int selected = playlistChoice(playlists, playlistsCount);
     while (selected < playlistsCount) {
-        Action action = playlistMenu(&(*playlists)[selected]);
-        if (action == SAFE_EXIT)
-            safeExit(playlists, playlistsCount);
-
+        playlistMenu(&(*playlists)[selected]);
         selected = playlistChoice(playlists, playlistsCount);
     }
 }
