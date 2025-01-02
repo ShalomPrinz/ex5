@@ -62,7 +62,7 @@ int playlistChoice(Playlist** playlists, int playlistsCount) {
         scanf("%d", &choice);
 
         // Valid choice, stop the loop and return it
-        if (choice >= FIRST_CHOICE || choice <= playlistsCount)
+        if (choice >= FIRST_CHOICE && choice <= playlistsCount + 1)
             break;
 
         // Invalid choice, input again for a valid playlist
@@ -83,7 +83,7 @@ int playlistMenuChoice() {
         scanf("%d", &choice);
 
         // Valid menu choice, stop the loop and return it
-        if (choice >= FIRST_CHOICE || choice <= EXIT_PLAYLIST_MENU_CHOICE)
+        if (choice >= FIRST_CHOICE && choice <= EXIT_PLAYLIST_MENU_CHOICE)
             break;
 
         // Invalid choice, input again for a valid menu choice
@@ -93,33 +93,52 @@ int playlistMenuChoice() {
 }
 
 /*
+ Frees a single song
+ Note: song is not freed because it's assumed to be a part of an array
+*/
+void freeSong(Song* song) {
+    // If song pointer is NULL, return without freeing it
+    if (song == NULL) return;
+
+    // Free song properties by order
+    free(song->title);
+    free(song->artist);
+    free(song->lyrics);
+}
+
+/*
  Frees a single playlist
+ Note: playlist is not freed because it's assumed to be a part of an array
 */
 void freePlaylist(Playlist* playlist) {
+    // If playlist pointer is NULL, return without freeing it
     if (playlist == NULL) return;
 
     // Free playlist properties by their order
     free(playlist->name);
-    if (playlist->songs != NULL) {
-        for (int song = 0; song < playlist->songsNum; song++) {
-            // TODO move to song dedicated function?
-            free(playlist->songs[song].title);
-            free(playlist->songs[song].artist);
-            free(playlist->songs[song].lyrics);
-        }
-        free(playlist->songs);
-    }
+
+    // If playlist songs pointer is NULL, return without freeing them
+    if (playlist->songs == NULL) return;
+
+    // Free each song in songs and then free the array pointer
+    for (int song = 0; song < playlist->songsNum; song++)
+        freeSong(&playlist->songs[song]);
+    free(playlist->songs);
 }
 
 /*
  Frees all playlists
 */
 void freeAll(Playlist** playlists, int playlistsCount) {
+    // If playlists array pointer is NULL, return without freeing it
     if (playlists == NULL) return;
 
     for (int pl = 0; pl < playlistsCount; pl++)
         // Free each playlist. &(*playlists)[pl]: address of playlist number "pl"
         freePlaylist(&(*playlists)[pl]);
+
+    // Free main playlists array pointer
+    free(*playlists);
 }
 
 /*
@@ -210,16 +229,31 @@ void removePlaylist(Playlist** playlists, int* playlistsCount) {
     printf("Playlist deleted.\n");
 }
 
-void showPlaylist(Playlist* playlist) {
+/*
+ Displays all songs and asks the user to choose a song index for the given "purpose"
+ Returns user's choice
+*/
+int chooseSong(Playlist *playlist, char* purpose) {
+    // Display all songs by given format
     for (int song = 0; song < playlist->songsNum; song++) {
         Song currentSong = playlist->songs[song];
         printf("%d. Title: %s\n   Artist: %s\n   Released: %d\n   Streams: %d\n\n",
             song + 1, currentSong.title, currentSong.artist, currentSong.year, currentSong.streams);
     }
-    printf("choose a song to play, or 0 to quit:\n");
+    printf("choose a song to %s, or 0 to quit:\n", purpose);
 
+    // Returns user's choice
     int choice;
     scanf("%d", &choice);
+    return choice;
+}
+
+/*
+ Asks the user to choose a song to play until user chooses to quit play mode
+*/
+void showPlaylist(Playlist* playlist) {
+    int choice = chooseSong(playlist, "play");
+    // Validates choice is in valid choice range (song index = choice - 1)
     while (choice > 0 && choice <= playlist->songsNum) {
         Song chosenSong = playlist->songs[choice - 1];
         printf("Now playing %s:\n$ %s $\nchoose a song to play, or 0 to quit:\n",
@@ -265,6 +299,25 @@ void addSongToPlaylist(Playlist* playlist) {
 }
 
 /*
+ Inputs a song index and removes it from songs array of given playlist
+*/
+void removeSong(Playlist *playlist) {
+    // Gets song index
+    int choice = chooseSong(playlist, "delete");
+    // Invalid song index / chosen one is 0 = exit
+    if (choice <= 0 || choice > playlist->songsNum) return;
+
+    // Free chosen song pointer
+    freeSong(&playlist->songs[choice - 1]);
+    for (int currentSong = choice - 1; currentSong < playlist->songsNum - 1; currentSong++)
+        playlist->songs[currentSong] = playlist->songs[currentSong + 1];
+
+    // Decrease playlist songs count by one
+    playlist->songsNum--;
+    printf("Song deleted successfully.\n");
+}
+
+/*
  Playlist actions menu, asks for user action choice and acts accordingly until exit menu is chosen
 */
 void playlistMenu(Playlist* playlist) {
@@ -286,6 +339,7 @@ void playlistMenu(Playlist* playlist) {
 
             // Delete Song
             case 3:
+                removeSong(playlist);
                 break;
 
             // Sort
@@ -363,7 +417,6 @@ int main() {
 
     // Free all playlists before exit
     freeAll(&playlists, playlistsCount);
-    free(playlists);
 
     // Exit program
     printf("Goodbye!\n");

@@ -540,3 +540,291 @@ Please Choose:
         3. Remove playlist
         4. exit
 Goodbye!
+
+- name: addPl addSo validate-remove-input exit
+  input: |
+2 out
+1 1 2 t1
+a1
+1900
+hello world!
+3 0 3 2 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. out
+        2. Back to main menu
+playlist out:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: t1
+   Artist: a1
+   Released: 1900
+   Streams: 0
+
+choose a song to delete, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: t1
+   Artist: a1
+   Released: 1900
+   Streams: 0
+
+choose a song to delete, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. out
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: addPl addSo removeSo watch
+  input: |
+2 out
+1 1 2 t1
+a1
+1900
+hello world!
+3 1 1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. out
+        2. Back to main menu
+playlist out:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: t1
+   Artist: a1
+   Released: 1900
+   Streams: 0
+
+choose a song to delete, or 0 to quit:
+Song deleted successfully.
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. out
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: addPl. Songs: add add remove1 add remove2 watch remove1
+  input: |
+2 out
+1 1 2 t1
+a1
+1900
+hello world!
+2 t2
+a2
+1492
+other lyr
+3 1 2 title3
+some Art
+2018
+new stuff
+3 2 1 0 3 1 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. out
+        2. Back to main menu
+playlist out:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: t1
+   Artist: a1
+   Released: 1900
+   Streams: 0
+
+2. Title: t2
+   Artist: a2
+   Released: 1492
+   Streams: 0
+
+choose a song to delete, or 0 to quit:
+Song deleted successfully.
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: t2
+   Artist: a2
+   Released: 1492
+   Streams: 0
+
+2. Title: title3
+   Artist: some Art
+   Released: 2018
+   Streams: 0
+
+choose a song to delete, or 0 to quit:
+Song deleted successfully.
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: t2
+   Artist: a2
+   Released: 1492
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: t2
+   Artist: a2
+   Released: 1492
+   Streams: 0
+
+choose a song to delete, or 0 to quit:
+Song deleted successfully.
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. out
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
