@@ -182,12 +182,12 @@ Please Choose:
 Goodbye!
 
 - name: add add remove1 add remove2 watch remove1
-input: |
+  input: |
 2 first
 2 second
 3 1 2 third
 3 2 1 2 3 1 4
-output: |
+  output: |
 Please Choose:
         1. Watch playlists
         2. Add playlist
