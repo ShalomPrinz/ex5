@@ -54,7 +54,6 @@ int playlistChoice(Playlist** playlists, int playlistsCount) {
     do {
         printf("Choose a playlist:\n");
         int plNum = 1;
-        // TODO is this for allowed? check coding style how
         // Print playlists menu, including "back to main menu" option
         for (; plNum - 1 < playlistsCount; plNum++)
             printf("\t%d. %s\n", plNum, (*playlists)[plNum - 1].name);
@@ -94,7 +93,7 @@ int playlistMenuChoice() {
 
 /*
  Frees a single song
- Note: song is not freed because it's assumed to be a part of an array
+ Note: song itself isn't freed because it's assumed to be a part of an array
 */
 void freeSong(Song* song) {
     // If song pointer is NULL, return without freeing it
@@ -108,7 +107,7 @@ void freeSong(Song* song) {
 
 /*
  Frees a single playlist
- Note: playlist is not freed because it's assumed to be a part of an array
+ Note: playlist itself isn't freed because it's assumed to be a part of an array
 */
 void freePlaylist(Playlist* playlist) {
     // If playlist pointer is NULL, return without freeing it
@@ -151,6 +150,7 @@ void exitProgram() {
 
 /*
  Inputs unlimited string (until enter is pressed) and returns the string pointer
+ Returns NULL pointer if reallocation failed during the process
 */
 char* allocateInputString() {
     int size = 0;
@@ -158,12 +158,13 @@ char* allocateInputString() {
 
     char c;
     scanf(" %c", &c);
-    // Scan chars until enter is pressed
-    while (c != '\n') {
+    // Scan chars until enter is pressed (or /r is inserted)
+    while (c != '\n' && c != '\r') {
         // Allocate space for the new char
         size++;
         char* temp = realloc(str, (size + 1) * sizeof(char));
-        // Allocation failed - free built string before function exit
+
+        // Allocation failed - free str to prevent possible leak and return NULL pointer
         if (temp == NULL) {
             free(str);
             return NULL;
@@ -249,25 +250,39 @@ int chooseSong(Playlist *playlist, char* purpose) {
 }
 
 /*
+ Plays given song by printing its lyrics to the console
+*/
+void playSong(Song *song) {
+    printf("Now playing %s:\n$ %s $\n", song->title, song->lyrics);
+    // Each time a song is played, increase its streams by one
+    song->streams++;
+}
+
+/*
  Asks the user to choose a song to play until user chooses to quit play mode
 */
 void showPlaylist(Playlist* playlist) {
     int choice = chooseSong(playlist, "play");
     // Validates choice is in valid choice range (song index = choice - 1)
     while (choice > 0 && choice <= playlist->songsNum) {
-        Song chosenSong = playlist->songs[choice - 1];
-        printf("Now playing %s:\n$ %s $\nchoose a song to play, or 0 to quit:\n",
-            chosenSong.title, chosenSong.lyrics);
+        playSong(&playlist->songs[choice - 1]);
+        printf("choose a song to play, or 0 to quit:\n");
         scanf("%d", &choice);
     }
 }
 
+/*
+ Inputs all required song properties from user
+ Appends a new song with those properties to given playlist's song array
+*/
 void addSongToPlaylist(Playlist* playlist) {
+    // Allocates memory for new array
     Song* newSongs = realloc(playlist->songs, (playlist->songsNum + 1) * sizeof(Song));
     if (newSongs == NULL)
         exitProgram();
     playlist->songs = newSongs;
 
+    // Inputs song properties by required order
     printf("Enter song's details\nTitle:\n");
     char* title = allocateInputString();
     if (title == NULL)
@@ -287,6 +302,7 @@ void addSongToPlaylist(Playlist* playlist) {
     if (lyrics == NULL)
         exitProgram();
 
+    // Set song properties to given inputs
     Song* song = &playlist->songs[playlist->songsNum];
     song->title = title;
     song->artist = artist;
@@ -317,6 +333,20 @@ void removeSong(Playlist *playlist) {
     printf("Song deleted successfully.\n");
 }
 
+void sortPlaylistSongs(Playlist *playlist) {
+
+}
+
+/*
+ Plays all playlist songs by their insertion order
+*/
+void playAllPlaylistSongs(Playlist *playlist) {
+    for (int song = 0; song < playlist->songsNum; song++) {
+        playSong(&playlist->songs[song]);
+        printf("\n");
+    }
+}
+
 /*
  Playlist actions menu, asks for user action choice and acts accordingly until exit menu is chosen
 */
@@ -344,10 +374,12 @@ void playlistMenu(Playlist* playlist) {
 
             // Sort
             case 4:
+                sortPlaylistSongs(playlist);
                 break;
 
             // Play
             case 5:
+                playAllPlaylistSongs(playlist);
                 break;
 
             // exit
@@ -367,8 +399,11 @@ void playlistMenu(Playlist* playlist) {
 */
 void selectPlaylistMenu(Playlist** playlists, int playlistsCount) {
     int selected = playlistChoice(playlists, playlistsCount);
+    // Loop until user selects to exit this menu
     while (selected < playlistsCount) {
+        // An inner menu for handling selected playlist
         playlistMenu(&(*playlists)[selected]);
+        // Input next user selection
         selected = playlistChoice(playlists, playlistsCount);
     }
 }
@@ -412,7 +447,7 @@ int main() {
     Playlist* playlists = NULL;
     int playlistsCount = 0;
 
-    // Run main menu
+    // Run main menu and input user choices until exit is chosen
     mainMenu(&playlists, &playlistsCount);
 
     // Free all playlists before exit

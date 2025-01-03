@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Run file without xargs errors: . test.sh 2>&1 | grep -v '^xargs:'
+
 # Compile the C program
 gcc ex5.c -o program -lm -g -std=c99 -DNDEBUG
 
@@ -20,7 +22,7 @@ run_test_case() {
     fi
 
     # Run the program with input and capture output
-    actual_output=$(echo "$input" | ./program | tr -d '\r')
+    actual_output=$(echo "$input" | ./program)
     actual_output="${actual_output}
 "
 
