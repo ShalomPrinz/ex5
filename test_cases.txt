@@ -1027,3 +1027,1577 @@ Please Choose:
         3. Remove playlist
         4. exit
 Goodbye!
+
+- name: Sort alphabetically. show, add 3 songs, sort, show
+  input: |
+2 another
+1 1 2 title1
+artist1
+2000
+that's my lyrics
+2 t2
+art2
+2017
+another lyr
+2 bro title
+zone
+2013
+lyr more lyr
+1 0 4 4 1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+playlist another:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+3. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+choose:
+1. sort by year
+2. sort by streams - ascending order
+3. sort by streams - descending order
+4. sort alphabetically
+sorted
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+3. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: Sort default sort (alphabetically). show, add 3 songs, sort, show
+  input: |
+2 another
+1 1 2 title1
+artist1
+2000
+that's my lyrics
+2 t2
+art2
+2017
+another lyr
+2 bro title
+zone
+2013
+lyr more lyr
+1 0 4 5 1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+playlist another:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+3. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+choose:
+1. sort by year
+2. sort by streams - ascending order
+3. sort by streams - descending order
+4. sort alphabetically
+sorted
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+3. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: Sort by year. show, add 3 songs, sort, show
+  input: |
+2 another
+1 1 2 title1
+artist1
+2000
+that's my lyrics
+2 t2
+art2
+2017
+another lyr
+2 bro title
+zone
+2013
+lyr more lyr
+1 0 4 1 1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+playlist another:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+3. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+choose:
+1. sort by year
+2. sort by streams - ascending order
+3. sort by streams - descending order
+4. sort alphabetically
+sorted
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+2. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+3. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: Sort by streams asc. add 3 songs, play, show, sort, show
+  input: |
+2 another
+1 1 2 title1
+artist1
+2000
+that's my lyrics
+2 t2
+art2
+2017
+another lyr
+2 bro title
+zone
+2013
+lyr more lyr
+1 1 0 4 2 1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+playlist another:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+3. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+Now playing title1:
+$ that's my lyrics $
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+choose:
+1. sort by year
+2. sort by streams - ascending order
+3. sort by streams - descending order
+4. sort alphabetically
+sorted
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+2. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+3. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 1
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: Sort by streams desc. add 3 songs, play, show, sort, show
+  input: |
+2 another
+1 1 2 title1
+artist1
+2000
+that's my lyrics
+2 t2
+art2
+2017
+another lyr
+2 bro title
+zone
+2013
+lyr more lyr
+1 2 0 4 3 1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+playlist another:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 0
+
+3. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+Now playing t2:
+$ another lyr $
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+choose:
+1. sort by year
+2. sort by streams - ascending order
+3. sort by streams - descending order
+4. sort alphabetically
+sorted
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 1
+
+2. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 0
+
+3. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 0
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!
+
+- name: Sort by streams desc, play many. add 3 songs, play, show, sort, show
+  input: |
+2 another
+1 1 2 title1
+artist1
+2000
+that's my lyrics
+2 t2
+art2
+2017
+another lyr
+2 bro title
+zone
+2013
+lyr more lyr
+2 title3
+artist3
+2005
+some cool lyrics
+2 t4
+art4
+2011
+awesome beats lyrics
+2 track5
+vibe
+2018
+new era lyrics
+2 new track
+blaze
+2019
+fire lyrics
+2 melody
+light
+2020
+dreamy lyrics
+2 rhythm
+storm
+2021
+electric vibes lyrics
+2 beatwave
+echo
+2016
+smooth flow lyrics
+2 soundwave
+drop
+2014
+epic drop lyrics
+2 soul beat
+pulse
+2012
+heartfelt lyrics
+2 flow5
+air
+2015
+melodic lyrics
+2 musicdream
+wave
+2022
+catchy lyrics
+2 vibe tracks
+spark
+2023
+fresh beats lyrics
+2 tempo flow
+lightning
+2024
+powerful lyrics
+5 1 1 1 0 5 1 2 2 2 1 1 3 4 5 6 7 8 11 12 15 11 8 8 8 0 5
+1 7 7 3 3 3 3 11 14 0 4 3 1 0 6 2 4
+  output: |
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Enter playlist's name:
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+playlist another:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Enter song's details
+Title:
+Artist:
+Year of release:
+Lyrics:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Now playing title1:
+$ that's my lyrics $
+
+Now playing t2:
+$ another lyr $
+
+Now playing bro title:
+$ lyr more lyr $
+
+Now playing title3:
+$ some cool lyrics $
+
+Now playing t4:
+$ awesome beats lyrics $
+
+Now playing track5:
+$ new era lyrics $
+
+Now playing new track:
+$ fire lyrics $
+
+Now playing melody:
+$ dreamy lyrics $
+
+Now playing rhythm:
+$ electric vibes lyrics $
+
+Now playing beatwave:
+$ smooth flow lyrics $
+
+Now playing soundwave:
+$ epic drop lyrics $
+
+Now playing soul beat:
+$ heartfelt lyrics $
+
+Now playing flow5:
+$ melodic lyrics $
+
+Now playing musicdream:
+$ catchy lyrics $
+
+Now playing vibe tracks:
+$ fresh beats lyrics $
+
+Now playing tempo flow:
+$ powerful lyrics $
+
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 1
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 1
+
+3. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 1
+
+4. Title: title3
+   Artist: artist3
+   Released: 2005
+   Streams: 1
+
+5. Title: t4
+   Artist: art4
+   Released: 2011
+   Streams: 1
+
+6. Title: track5
+   Artist: vibe
+   Released: 2018
+   Streams: 1
+
+7. Title: new track
+   Artist: blaze
+   Released: 2019
+   Streams: 1
+
+8. Title: melody
+   Artist: light
+   Released: 2020
+   Streams: 1
+
+9. Title: rhythm
+   Artist: storm
+   Released: 2021
+   Streams: 1
+
+10. Title: beatwave
+   Artist: echo
+   Released: 2016
+   Streams: 1
+
+11. Title: soundwave
+   Artist: drop
+   Released: 2014
+   Streams: 1
+
+12. Title: soul beat
+   Artist: pulse
+   Released: 2012
+   Streams: 1
+
+13. Title: flow5
+   Artist: air
+   Released: 2015
+   Streams: 1
+
+14. Title: musicdream
+   Artist: wave
+   Released: 2022
+   Streams: 1
+
+15. Title: vibe tracks
+   Artist: spark
+   Released: 2023
+   Streams: 1
+
+16. Title: tempo flow
+   Artist: lightning
+   Released: 2024
+   Streams: 1
+
+choose a song to play, or 0 to quit:
+Now playing title1:
+$ that's my lyrics $
+choose a song to play, or 0 to quit:
+Now playing title1:
+$ that's my lyrics $
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Now playing title1:
+$ that's my lyrics $
+
+Now playing t2:
+$ another lyr $
+
+Now playing bro title:
+$ lyr more lyr $
+
+Now playing title3:
+$ some cool lyrics $
+
+Now playing t4:
+$ awesome beats lyrics $
+
+Now playing track5:
+$ new era lyrics $
+
+Now playing new track:
+$ fire lyrics $
+
+Now playing melody:
+$ dreamy lyrics $
+
+Now playing rhythm:
+$ electric vibes lyrics $
+
+Now playing beatwave:
+$ smooth flow lyrics $
+
+Now playing soundwave:
+$ epic drop lyrics $
+
+Now playing soul beat:
+$ heartfelt lyrics $
+
+Now playing flow5:
+$ melodic lyrics $
+
+Now playing musicdream:
+$ catchy lyrics $
+
+Now playing vibe tracks:
+$ fresh beats lyrics $
+
+Now playing tempo flow:
+$ powerful lyrics $
+
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 4
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 2
+
+3. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 2
+
+4. Title: title3
+   Artist: artist3
+   Released: 2005
+   Streams: 2
+
+5. Title: t4
+   Artist: art4
+   Released: 2011
+   Streams: 2
+
+6. Title: track5
+   Artist: vibe
+   Released: 2018
+   Streams: 2
+
+7. Title: new track
+   Artist: blaze
+   Released: 2019
+   Streams: 2
+
+8. Title: melody
+   Artist: light
+   Released: 2020
+   Streams: 2
+
+9. Title: rhythm
+   Artist: storm
+   Released: 2021
+   Streams: 2
+
+10. Title: beatwave
+   Artist: echo
+   Released: 2016
+   Streams: 2
+
+11. Title: soundwave
+   Artist: drop
+   Released: 2014
+   Streams: 2
+
+12. Title: soul beat
+   Artist: pulse
+   Released: 2012
+   Streams: 2
+
+13. Title: flow5
+   Artist: air
+   Released: 2015
+   Streams: 2
+
+14. Title: musicdream
+   Artist: wave
+   Released: 2022
+   Streams: 2
+
+15. Title: vibe tracks
+   Artist: spark
+   Released: 2023
+   Streams: 2
+
+16. Title: tempo flow
+   Artist: lightning
+   Released: 2024
+   Streams: 2
+
+choose a song to play, or 0 to quit:
+Now playing t2:
+$ another lyr $
+choose a song to play, or 0 to quit:
+Now playing t2:
+$ another lyr $
+choose a song to play, or 0 to quit:
+Now playing t2:
+$ another lyr $
+choose a song to play, or 0 to quit:
+Now playing title1:
+$ that's my lyrics $
+choose a song to play, or 0 to quit:
+Now playing title1:
+$ that's my lyrics $
+choose a song to play, or 0 to quit:
+Now playing bro title:
+$ lyr more lyr $
+choose a song to play, or 0 to quit:
+Now playing title3:
+$ some cool lyrics $
+choose a song to play, or 0 to quit:
+Now playing t4:
+$ awesome beats lyrics $
+choose a song to play, or 0 to quit:
+Now playing track5:
+$ new era lyrics $
+choose a song to play, or 0 to quit:
+Now playing new track:
+$ fire lyrics $
+choose a song to play, or 0 to quit:
+Now playing melody:
+$ dreamy lyrics $
+choose a song to play, or 0 to quit:
+Now playing soundwave:
+$ epic drop lyrics $
+choose a song to play, or 0 to quit:
+Now playing soul beat:
+$ heartfelt lyrics $
+choose a song to play, or 0 to quit:
+Now playing vibe tracks:
+$ fresh beats lyrics $
+choose a song to play, or 0 to quit:
+Now playing soundwave:
+$ epic drop lyrics $
+choose a song to play, or 0 to quit:
+Now playing melody:
+$ dreamy lyrics $
+choose a song to play, or 0 to quit:
+Now playing melody:
+$ dreamy lyrics $
+choose a song to play, or 0 to quit:
+Now playing melody:
+$ dreamy lyrics $
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Now playing title1:
+$ that's my lyrics $
+
+Now playing t2:
+$ another lyr $
+
+Now playing bro title:
+$ lyr more lyr $
+
+Now playing title3:
+$ some cool lyrics $
+
+Now playing t4:
+$ awesome beats lyrics $
+
+Now playing track5:
+$ new era lyrics $
+
+Now playing new track:
+$ fire lyrics $
+
+Now playing melody:
+$ dreamy lyrics $
+
+Now playing rhythm:
+$ electric vibes lyrics $
+
+Now playing beatwave:
+$ smooth flow lyrics $
+
+Now playing soundwave:
+$ epic drop lyrics $
+
+Now playing soul beat:
+$ heartfelt lyrics $
+
+Now playing flow5:
+$ melodic lyrics $
+
+Now playing musicdream:
+$ catchy lyrics $
+
+Now playing vibe tracks:
+$ fresh beats lyrics $
+
+Now playing tempo flow:
+$ powerful lyrics $
+
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 7
+
+2. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 6
+
+3. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 4
+
+4. Title: title3
+   Artist: artist3
+   Released: 2005
+   Streams: 4
+
+5. Title: t4
+   Artist: art4
+   Released: 2011
+   Streams: 4
+
+6. Title: track5
+   Artist: vibe
+   Released: 2018
+   Streams: 4
+
+7. Title: new track
+   Artist: blaze
+   Released: 2019
+   Streams: 4
+
+8. Title: melody
+   Artist: light
+   Released: 2020
+   Streams: 7
+
+9. Title: rhythm
+   Artist: storm
+   Released: 2021
+   Streams: 3
+
+10. Title: beatwave
+   Artist: echo
+   Released: 2016
+   Streams: 3
+
+11. Title: soundwave
+   Artist: drop
+   Released: 2014
+   Streams: 5
+
+12. Title: soul beat
+   Artist: pulse
+   Released: 2012
+   Streams: 4
+
+13. Title: flow5
+   Artist: air
+   Released: 2015
+   Streams: 3
+
+14. Title: musicdream
+   Artist: wave
+   Released: 2022
+   Streams: 3
+
+15. Title: vibe tracks
+   Artist: spark
+   Released: 2023
+   Streams: 4
+
+16. Title: tempo flow
+   Artist: lightning
+   Released: 2024
+   Streams: 3
+
+choose a song to play, or 0 to quit:
+Now playing new track:
+$ fire lyrics $
+choose a song to play, or 0 to quit:
+Now playing new track:
+$ fire lyrics $
+choose a song to play, or 0 to quit:
+Now playing bro title:
+$ lyr more lyr $
+choose a song to play, or 0 to quit:
+Now playing bro title:
+$ lyr more lyr $
+choose a song to play, or 0 to quit:
+Now playing bro title:
+$ lyr more lyr $
+choose a song to play, or 0 to quit:
+Now playing bro title:
+$ lyr more lyr $
+choose a song to play, or 0 to quit:
+Now playing soundwave:
+$ epic drop lyrics $
+choose a song to play, or 0 to quit:
+Now playing musicdream:
+$ catchy lyrics $
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+choose:
+1. sort by year
+2. sort by streams - ascending order
+3. sort by streams - descending order
+4. sort alphabetically
+sorted
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+1. Title: bro title
+   Artist: zone
+   Released: 2013
+   Streams: 8
+
+2. Title: title1
+   Artist: artist1
+   Released: 2000
+   Streams: 7
+
+3. Title: melody
+   Artist: light
+   Released: 2020
+   Streams: 7
+
+4. Title: t2
+   Artist: art2
+   Released: 2017
+   Streams: 6
+
+5. Title: new track
+   Artist: blaze
+   Released: 2019
+   Streams: 6
+
+6. Title: soundwave
+   Artist: drop
+   Released: 2014
+   Streams: 6
+
+7. Title: title3
+   Artist: artist3
+   Released: 2005
+   Streams: 4
+
+8. Title: t4
+   Artist: art4
+   Released: 2011
+   Streams: 4
+
+9. Title: track5
+   Artist: vibe
+   Released: 2018
+   Streams: 4
+
+10. Title: soul beat
+   Artist: pulse
+   Released: 2012
+   Streams: 4
+
+11. Title: musicdream
+   Artist: wave
+   Released: 2022
+   Streams: 4
+
+12. Title: vibe tracks
+   Artist: spark
+   Released: 2023
+   Streams: 4
+
+13. Title: rhythm
+   Artist: storm
+   Released: 2021
+   Streams: 3
+
+14. Title: beatwave
+   Artist: echo
+   Released: 2016
+   Streams: 3
+
+15. Title: flow5
+   Artist: air
+   Released: 2015
+   Streams: 3
+
+16. Title: tempo flow
+   Artist: lightning
+   Released: 2024
+   Streams: 3
+
+choose a song to play, or 0 to quit:
+        1. Show Playlist
+        2. Add Song
+        3. Delete Song
+        4. Sort
+        5. Play
+        6. exit
+Choose a playlist:
+        1. another
+        2. Back to main menu
+Please Choose:
+        1. Watch playlists
+        2. Add playlist
+        3. Remove playlist
+        4. exit
+Goodbye!

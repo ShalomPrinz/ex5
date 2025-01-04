@@ -2,13 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Any general menu first choice
 #define FIRST_CHOICE 1
+// Main menu exit choice
 #define EXIT_CHOICE 4
+// Playlist menu exit choice
 #define EXIT_PLAYLIST_MENU_CHOICE 6
-#define DEFAULT_SONG_STREAMS 0
-#define DEFAULT_SONGS_NUM 0
-
-// TODO validate all string.h had been seen in TIRGUL
+// Initial values of a song
+#define INITIAL_SONG_STREAMS 0
+#define INITIAL_SONGS_NUM 0
 
 typedef struct Song {
     char* title;
@@ -23,6 +25,13 @@ typedef struct Playlist {
     Song* songs;
     int songsNum;
 } Playlist;
+
+typedef enum Comparator {
+    YEAR,
+    STREAMS_ASC,
+    STREAMS_DESC,
+    TITLE
+} Comparator;
 
 /*
  Inputs a valid main menu option and returns it
@@ -145,7 +154,7 @@ void freeAll(Playlist** playlists, int playlistsCount) {
 */
 void exitProgram() {
     printf("Allocation failure: exit program\n");
-    exit(1);
+    exit(EXIT_FAILURE);
 }
 
 /*
@@ -204,7 +213,7 @@ void addPlaylist(Playlist** playlists, int* playlistsCount) {
     Playlist* playlist = &(*playlists)[*playlistsCount];
     playlist->name = name;
     playlist->songs = NULL;
-    playlist->songsNum = DEFAULT_SONGS_NUM;
+    playlist->songsNum = INITIAL_SONGS_NUM;
 
     // Increase playlists count by one
     (*playlistsCount)++;
@@ -308,7 +317,7 @@ void addSongToPlaylist(Playlist* playlist) {
     song->artist = artist;
     song->year = year;
     song->lyrics = lyrics;
-    song->streams = DEFAULT_SONG_STREAMS;
+    song->streams = INITIAL_SONG_STREAMS;
 
     // Increase playlist songs count by one
     playlist->songsNum++;
@@ -333,8 +342,135 @@ void removeSong(Playlist *playlist) {
     printf("Song deleted successfully.\n");
 }
 
-void sortPlaylistSongs(Playlist *playlist) {
+/*
+ Swaps song pointers content
+*/
+void swapSongs(Song *first, Song *second) {
+    Song temp = *first;
+    *first = *second;
+    *second = temp;
+}
 
+/*
+ Returns whether first is higher than first, determines how to compare by given "comp"
+ Maintains previous order when comparison results in equality
+*/
+int isFirstHigher(Song first, Song second, Comparator comp) {
+    switch (comp) {
+        // Sort by year in ascending order
+        case YEAR:
+            return first.year > second.year;
+
+        // Sort by streams in ascending order
+        case STREAMS_ASC:
+            return first.streams > second.streams;
+
+        // Sort by streams in descending order
+        case STREAMS_DESC:
+            return first.streams < second.streams;
+
+        // Sort by title in ascending order
+        case TITLE:
+            return strcmp(first.title, second.title) > 0;
+
+        // Default: sort by title in ascending order
+        default:
+            return strcmp(first.title, second.title) > 0;
+    }
+}
+
+/*
+ Merges two subarrays of given songs array
+ Left subarray is: (low - middle), right subarray is: (middle+1 - high)
+*/
+void merge(Song* songs, int low, int middle, int high, Comparator comp) {
+    // Calculate each subarray length separately
+    int leftLength = middle - low + 1;
+    int rightLength = high - middle;
+
+    // Allocate memory for each subarray to sort it outside of main songs array
+    Song* leftSubarray = malloc(leftLength * sizeof(Song));
+    Song* rightSubarray = malloc(rightLength * sizeof(Song));
+
+    // Validate allocation is successful
+    if (leftSubarray == NULL || rightSubarray == NULL)
+        exitProgram();
+
+    // Copy left subarray from songs into its dedicated array
+    for (int i = 0; i < leftLength; i++)
+        leftSubarray[i] = songs[low + i];
+
+    // Copy right subarray from songs into its dedicated array
+    for (int i = 0; i < rightLength; i++)
+        rightSubarray[i] = songs[middle + 1 + i];
+
+    // Separate index to track each array separatly
+    int leftIndex = 0, rightIndex = 0, mainIndex = low;
+    /*
+     Merge both subarrays into main songs array according to merge-sort algorithm
+     Loop until one of the indices reaches its array end, which means all its songs was copied to main array
+    */
+    while (leftIndex < leftLength && rightIndex < rightLength) {
+        /*
+         Determine which song should be "higher" in main array
+         Copy the "lower" song to main array
+         If both songs are equal by given comparator comparison, copy left song
+        */
+        if (isFirstHigher(leftSubarray[leftIndex], rightSubarray[rightIndex], comp))
+            songs[mainIndex++] = rightSubarray[rightIndex++];
+        else
+            songs[mainIndex++] = leftSubarray[leftIndex++];
+    }
+
+    // Copy all left subarray songs to main songs array, if there are any
+    while (leftIndex < leftLength)
+        songs[mainIndex++] = leftSubarray[leftIndex++];
+
+    // Copy all right subarray songs to main songs array, if there are any
+    while (rightIndex < rightLength)
+        songs[mainIndex++] = rightSubarray[rightIndex++];
+
+    // Free both subarrays, as all their songs had been sorted into main songs array
+    free(leftSubarray);
+    free(rightSubarray);
+}
+
+/*
+ Sorts given songs by given comparator using merge sort algorithm
+ This function is responsible for given array division into many subarrays  
+*/
+void mergeSortSongs(Song* songs, int low, int high, Comparator comp) {
+    // Base case: Chosen subarray has 0 / 1 items
+    if (low >= high) return;
+
+    // Calculates array middle, using this term to avoid potential overflow with big arrays
+    int middle = low + (high - low) / 2;
+
+    // Recursively sort first half subarray, and then second half subarray
+    mergeSortSongs(songs, low, middle, comp);
+    mergeSortSongs(songs, middle + 1, high, comp);
+
+    // Perform merge sort algorithm
+    merge(songs, low, middle, high, comp);
+}
+
+/*
+ Sorts playlist songs by a chosen criterion of allowed criteria list
+ Defaults to sort by title
+*/
+void sortPlaylistSongs(Playlist *playlist) {
+    printf("choose:\n"
+        "1. sort by year\n"
+        "2. sort by streams - ascending order\n"
+        "3. sort by streams - descending order\n"
+        "4. sort alphabetically\n");
+
+    // Sort according to user's choice
+    int choice;
+    scanf("%d", &choice);
+    mergeSortSongs(playlist->songs, 0, playlist->songsNum - 1, (Comparator) (choice - 1));
+
+    printf("sorted\n");
 }
 
 /*
