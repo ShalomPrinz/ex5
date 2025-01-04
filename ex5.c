@@ -33,6 +33,55 @@ typedef enum Comparator {
     TITLE
 } Comparator;
 
+// User menu choice input
+int mainMenuChoice();
+int playlistChoice(Playlist** playlists, int playlistsCount);
+int playlistMenuChoice();
+
+// Memory management logic
+void freeSong(Song* song);
+void freePlaylist(Playlist* playlist);
+void freeAll(Playlist** playlists, int playlistsCount);
+void exitProgram();
+char* allocateInputString();
+
+// Sort logic
+void swapSongs(Song *first, Song *second);
+int isFirstHigher(Song first, Song second, Comparator comp);
+void merge(Song* songs, int low, int middle, int high, Comparator comp);
+void mergeSortSongs(Song* songs, int low, int high, Comparator comp);
+void sortPlaylistSongs(Playlist *playlist);
+
+// Menus logic
+void playlistMenu(Playlist* playlist);
+void selectPlaylistMenu(Playlist** playlists, int playlistsCount);
+void mainMenu(Playlist** playlists, int* playlistsCount);
+
+// Rest of app logic
+void addPlaylist(Playlist** playlists, int* playlistsCount);
+void removePlaylist(Playlist** playlists, int* playlistsCount);
+int chooseSong(Playlist *playlist, char* purpose);
+void playSong(Song *song);
+void showPlaylist(Playlist* playlist);
+void addSongToPlaylist(Playlist* playlist);
+void removeSong(Playlist *playlist);
+void playAllPlaylistSongs(Playlist *playlist);
+
+int main() {
+    // Init playlists
+    Playlist* playlists = NULL;
+    int playlistsCount = 0;
+
+    // Run main menu and input user choices until exit is chosen
+    mainMenu(&playlists, &playlistsCount);
+
+    // Free all playlists before exit
+    freeAll(&playlists, playlistsCount);
+
+    // Exit program
+    printf("Goodbye!\n");
+}
+
 /*
  Inputs a valid main menu option and returns it
 */
@@ -108,7 +157,7 @@ void freeSong(Song* song) {
     // If song pointer is NULL, return without freeing it
     if (song == NULL) return;
 
-    // Free song properties by order
+    // Free song properties by their order
     free(song->title);
     free(song->artist);
     free(song->lyrics);
@@ -518,7 +567,7 @@ void playlistMenu(Playlist* playlist) {
                 playAllPlaylistSongs(playlist);
                 break;
 
-            // exit
+            // exit - implemented in while terminating condition
             case 6:
                 break;
 
@@ -566,7 +615,7 @@ void mainMenu(Playlist** playlists, int* playlistsCount) {
                 removePlaylist(playlists, playlistsCount);
                 break;
 
-            // Exit
+            // Exit - implemented in while terminating condition
             case 4:
                 break;
 
@@ -576,19 +625,4 @@ void mainMenu(Playlist** playlists, int* playlistsCount) {
         }
         choice = mainMenuChoice();
     }
-}
-
-int main() {
-    // Init playlists
-    Playlist* playlists = NULL;
-    int playlistsCount = 0;
-
-    // Run main menu and input user choices until exit is chosen
-    mainMenu(&playlists, &playlistsCount);
-
-    // Free all playlists before exit
-    freeAll(&playlists, playlistsCount);
-
-    // Exit program
-    printf("Goodbye!\n");
 }
